@@ -22,3 +22,11 @@ def text_formatting(text, alphabet):
             break
 
     return text
+
+def vigenere(text, key, sign):
+    result = ""
+    for i in range(len(text)):
+        m = ALPHABET.index(text[i])            # letter code from the text
+        k = ALPHABET.index(key[i % len(key)])  # letter code from the key
+        result += ALPHABET[(m + sign * k) % N]
+    return result
