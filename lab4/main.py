@@ -12,7 +12,20 @@ IP = [58, 50, 42, 34, 26, 18, 10, 2,
 
 def print_table(name, table, cols):
     print(f"\nTable {name}:")
-    
+
     for i in range(0, len(table), cols):
         row = table[i:i + cols]
         print("  ".join(f"{x:2}" for x in row))
+
+def text_to_bits(text):
+    bits = ""
+    print("\nStep 1. Convert each character to 8 bits (ASCII):")
+    for ch in text:
+        b = format(ord(ch), "08b")
+        print(f"  '{ch}' -> ASCII {ord(ch):3} -> {b}")
+        bits += b
+    return bits
+
+
+def group_bits(bits, size=8):
+    return " ".join(bits[i:i + size] for i in range(0, len(bits), size))
