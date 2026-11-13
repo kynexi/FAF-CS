@@ -35,3 +35,16 @@ def permute(bits, table):
     for pos in table:
         result += bits[pos - 1]
     return result
+
+def get_message():
+    choice = input("1 - enter message, 2 - random message: ")
+    if choice == "2":
+        letters = string.ascii_letters + string.digits
+        msg = "".join(random.choice(letters) for _ in range(8))
+        print("Generated message:", msg)
+        return msg
+
+    msg = input("Enter message (8 characters): ")
+    while len(msg) != 8:
+        msg = input("Message must have exactly 8 characters, try again: ")
+    return msg
