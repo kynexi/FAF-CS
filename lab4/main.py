@@ -29,3 +29,9 @@ def text_to_bits(text):
 
 def group_bits(bits, size=8):
     return " ".join(bits[i:i + size] for i in range(0, len(bits), size))
+
+def permute(bits, table):
+    result = ""
+    for pos in table:
+        result += bits[pos - 1]
+    return result
