@@ -48,3 +48,32 @@ def get_message():
     while len(msg) != 8:
         msg = input("Message must have exactly 8 characters, try again: ")
     return msg
+
+def main():
+    print("Lab 4 - DES; " \
+    "task 2.4: find L1 from the message")
+    msg = get_message()
+
+    m_bits = text_to_bits(msg)
+    print("\nM  =", group_bits(m_bits))
+    print("M (hex) =", format(int(m_bits, 2), "016X"))
+
+    print_table("IP", IP, 8)
+    ip_bits = permute(m_bits, IP)
+    print("\nStep 2. Apply initial permutation IP:")
+    print("IP(M) =", group_bits(ip_bits))
+
+    l0 = ip_bits[:32]
+    r0 = ip_bits[32:]
+    print("\nStep 3. Split IP(M) into two halves:")
+    print("L0 =", group_bits(l0, 4))
+    print("R0 =", group_bits(r0, 4))
+
+    l1 = r0
+    print("\nStep 4. By the DES round formula L1 = R0:")
+    print("L1 =", group_bits(l1, 4))
+    print("L1 (hex) =", format(int(l1, 2), "08X"))
+
+
+if __name__ == "__main__":
+    main()
