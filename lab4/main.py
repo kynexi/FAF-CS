@@ -10,3 +10,9 @@ IP = [58, 50, 42, 34, 26, 18, 10, 2,
       61, 53, 45, 37, 29, 21, 13, 5,
       63, 55, 47, 39, 31, 23, 15, 7]
 
+def print_table(name, table, cols):
+    print(f"\nTable {name}:")
+    
+    for i in range(0, len(table), cols):
+        row = table[i:i + cols]
+        print("  ".join(f"{x:2}" for x in row))
